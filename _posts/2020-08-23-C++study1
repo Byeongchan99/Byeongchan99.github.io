@@ -1,0 +1,75 @@
+윤성우 열혈 C++ 프로그래밍
+
+문제 01-1 [C++ 기반의 데이터 입출력]
+
+문제 1
+
+#include <iostream>
+
+int main(void) {
+	int num, result = 0;
+
+	for (int i = 1; i <= 5; i++) {   //반복문으로 정수 입력
+		std::cout << i << "번쨰 정수 입력: ";
+		std::cin >> num;
+		result += num;   //정수의 합 구하기
+	}
+	
+	std::cout << "합계: " << result;   //결과값 출력
+
+	return 0;
+}
+
+문제 2
+
+#include <iostream>
+
+int main(void) {
+	char name[100];
+	char phone_num[100];
+
+	std::cout << "이름: ";   //이름과 전화번호 입력
+	std::cin >> name;
+	std::cout << "전화번호: ";
+	std::cin >> phone_num;
+
+	std::cout << "이름: " << name << std::endl << "전화번호: " <<  phone_num;   //입력한 이름과 전화번호 출력
+
+	return 0;
+}
+
+문제 3
+
+#include <iostream>
+
+int main(void) {
+	int num;
+
+	std::cout << "숫자 입력 : ";   //구구단에 넣을 숫자 입력
+	std::cin >> num;
+
+	for (int i = 1; i <= 9; i++) {   //반복문으로 '숫자' X '숫자' = '숫자' 형태로 출력
+		std::cout << num << " X " << i << " = " << i * num << std::endl;
+	}
+
+	return 0;
+}
+
+문제 4
+
+#include <iostream>
+
+int main(void) {
+	int price = 0;
+
+	while (1) {   // 무한 반복문
+		std::cout << "판매 금액을 만원 단위로 입력(-1 to end): ";
+		std::cin >> price;
+		if (price == -1)   //-1이 입력됐을 시 반복문 탈출
+			break;
+		price = price * 12 / 100 + 50;
+		std::cout << "이번 달 급여: " << price << std::endl;   //급여 계산 후 출력
+	}
+	std::cout << "프로그램을 종료합니다.";
+	return 0;
+}
