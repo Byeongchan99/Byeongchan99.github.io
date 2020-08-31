@@ -1,0 +1,42 @@
+---
+title: "윤성우 열혈 C++ 프로그래밍 문제 03-1 [구조체 내에 함수정의하기]"
+date: 2020-09-01 19:51:28 -0400
+categories: C++
+---
+
+윤성우 열혈 C++ 프로그래밍 문제 03-1 [구조체 내에 함수정의하기]
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+
+struct Point {
+	int xpos;
+	int ypos;
+
+	void MovePos(int x, int y) {
+		xpos += x;
+		ypos += y;
+	}
+
+	void AddPoint(const Point &pos) {   // 단순히 정보를 출력만 하기 때문에 const 참조자를 매개변수로 선언
+		xpos += pos.xpos;
+		ypos += pos.ypos;
+	}
+
+	void ShowPosition() {
+		std::cout << "[" << xpos << " ," << ypos << "]" << std::endl;
+	}
+};
+
+int main(void) {
+	Point pos1 = { 12,4 };
+	Point pos2 = { 20,30 };
+
+	pos1.MovePos(-7, 10);
+	pos1.ShowPosition();
+
+	pos1.AddPoint(pos2);
+	pos1.ShowPosition();
+
+	return 0;
+}
