@@ -1,0 +1,104 @@
+---
+title: "윤성우 열혈 C++ 프로그래밍 문제 03-2 [클래스의 정의]"
+date: 2020-09-03 04:39:28 -0400
+categories: C++
+---
+
+윤성우 열혈 C++ 프로그래밍 문제 03-2 [클래스의 정의]
+
+
+
+문제 1
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cstring>
+
+class Calculator {
+private:
+	double NumAdd;
+	double NumMin;
+	double NumMul;
+	double NumDiv;
+
+public:
+	void Init();
+	double Add(double a, double b);
+	double Min(double a, double b);
+	double Mul(double a, double b);
+	double Div(double a, double b);
+	void ShowOpCount();
+};
+
+void Calculator::Init() {
+	NumAdd = NumMin = NumMul = NumDiv = 0;   // 멤버변수들 0으로 초기화
+}
+
+double Calculator::Add(double a, double b) {
+	NumAdd++;
+	return a + b;
+}
+
+double Calculator::Min(double a, double b) {
+	NumMin++;
+	return a - b;
+}
+
+double Calculator::Mul(double a, double b) {
+	NumMul++;
+	return a * b;
+}
+
+double Calculator::Div(double a, double b) {
+	NumDiv++;
+	return a / b;
+}
+
+void Calculator::ShowOpCount() {
+	std::cout << "덧셈: " << NumAdd << " 뺄셈: " << NumMin << " 곱셈: " << NumMul << " 나눗셈: " << NumDiv << std::endl;   // 멤버변수들 출력
+}
+
+int main(void) {
+	Calculator cal;
+	cal.Init();
+	std::cout << "3.2 + 2.4 = " << cal.Add(3.2, 2.4) << std::endl;
+	std::cout << "3.5 + 1.7 = " << cal.Div(3.5, 1.7) << std::endl;
+	std::cout << "2.2 + 1.5 = " << cal.Min(2.2, 1.5) << std::endl;
+	std::cout << "4.9 + 1.2 = " << cal.Div(4.9, 1.2) << std::endl;
+	cal.ShowOpCount();
+	return 0;
+}
+
+
+
+문제 2
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cstring>
+
+class Printer {
+private:
+	char string[100];
+public:
+	void SetString(const char* str);
+	void ShowString();
+};
+
+void Printer::SetString(const char* str) {
+	strcpy(string, str);   // 멤버변수 str에 문자열 저장
+}
+
+void Printer::ShowString() {
+	std::cout << string << std::endl;   // 문자열이 저장된 저장된 멤버변수 str 출력
+}
+
+int main(void) {
+	Printer pnt;
+	pnt.SetString("Hello world!");
+	pnt.ShowString();
+
+	pnt.SetString("I love C++");
+	pnt.ShowString();
+	return 0;
+}
